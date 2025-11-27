@@ -1,0 +1,9 @@
+- name: Deploy Auction Project using Ansible
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Run docker compose
+      command: docker compose up -d
+      args:
+        chdir: "/mnt/c/Users/gunta/Downloads/Online Auction System"
