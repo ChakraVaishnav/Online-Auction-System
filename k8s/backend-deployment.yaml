@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auction-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auction-backend
+  template:
+    metadata:
+      labels:
+        app: auction-backend
+    spec:
+      containers:
+        - name: auction-backend
+          image: coresume/auction-backend:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://mysql:3306/auction"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "root"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "root"
